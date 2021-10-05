@@ -1,7 +1,19 @@
-import { Container, Nav, Navbar } from "react-bootstrap";
-import { BsInstagram, BsGithub, BsTwitter } from "react-icons/bs";
+import { useState } from "react";
+import { Container, Nav, Navbar, Button } from "react-bootstrap";
+import Login from "./Login";
+import Register from "./Register";
 
 const Header = () => {
+  const [showLogin, setShowLogin] = useState(false);
+
+  const handleCloseLogin = () => setShowLogin(false);
+  const handleShowLogin = () => setShowLogin(true);
+
+  const [showRegister, setShowRegister] = useState(false);
+
+  const handleCloseRegister = () => setShowRegister(false);
+  const handleShowRegister = () => setShowRegister(true);
+
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
@@ -12,31 +24,21 @@ const Header = () => {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/about">About</Nav.Link>
           </Nav>
-          <a
-            href="https://www.instagram.com/shreyventure/"
-            target="_blank"
-            rel="noreferrer"
-            style={{ color: "#fff" }}
-          >
-            <BsInstagram className="mx-2 social-icon" />
-          </a>
+          <Button onClick={() => handleShowLogin()}>Login</Button>
+          <Login
+            show={showLogin}
+            handleShow={handleShowLogin}
+            handleClose={handleCloseLogin}
+          />
 
-          <a
-            href="https://github.com/shreyventure"
-            target="_blank"
-            rel="noreferrer"
-            style={{ color: "#fff" }}
-          >
-            <BsGithub className="mx-2 social-icon" />
-          </a>
-          <a
-            href="https://twitter.com/ShreyasShrawage"
-            target="_blank"
-            rel="noreferrer"
-            style={{ color: "#fff" }}
-          >
-            <BsTwitter className="mx-2 social-icon" />
-          </a>
+          <Button onClick={() => handleShowRegister()} className="mx-2">
+            Sign Up!
+          </Button>
+          <Register
+            show={showRegister}
+            handleShow={handleShowRegister}
+            handleClose={handleCloseRegister}
+          />
         </Navbar.Collapse>
       </Container>
     </Navbar>

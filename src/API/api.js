@@ -1,5 +1,5 @@
 import { Appwrite } from "appwrite";
-import { endpoint, project } from "../utils/config";
+import Server from "../utils/config";
 
 let api = {
   sdk: null,
@@ -9,7 +9,7 @@ let api = {
       return api.sdk;
     }
     let appwrite = new Appwrite();
-    appwrite.setEndpoint(endpoint).setProject(project);
+    appwrite.setEndpoint(Server.endpoint).setProject(Server.project);
     api.sdk = appwrite;
     return appwrite;
   },
