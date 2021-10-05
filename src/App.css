@@ -5,6 +5,6 @@
 }
 
 .social-icon:hover {
-  opacity: 0.8;
+  color: #5e38a4;
   cursor: pointer;
 }
