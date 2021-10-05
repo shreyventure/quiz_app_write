@@ -5,14 +5,12 @@ import QuizCard from "./components/QuizCard";
 import Footer from "./components/Footer";
 import { useState } from "react";
 import Start from "./components/Start";
-import api from "./API/api";
 
 function App() {
   const [start, setStart] = useState(false);
   const changeStart = () => {
     setStart(!start);
   };
-  api.provider();
   const data = [
     {
       question:
