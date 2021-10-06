@@ -15,23 +15,29 @@
   ![SignUp](./images/signup.png)
 
 - Quiz
+
   ![Quiz](./images/quiz.png)
 
 - Score
+
   ![Score](./images/score.png)
 
 ## Backend
 
 - Dashboard
+
   ![Dashboard](./images/appwrite_home.png)
 
 - Database
-  ![Database](./images/database.png)
+
+  ![Database](./images/Database.png)
 
 - Documents
+
   ![Documents](./images/documents.png)
 
 - Users
+
   ![Users](./images/users.png)
 
 # Getting Started with Create React App
