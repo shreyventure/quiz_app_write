@@ -38,7 +38,7 @@
 
 - Users
 
-  ![Users](./images/users.png)
+  ![Users](./images/Users.png)
 
 # Getting Started with Create React App
 
