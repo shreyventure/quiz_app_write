@@ -53,7 +53,7 @@ const QuizCard = ({
                 incrementIdx(idx + 1);
                 setStyle("info");
                 setAnswer(null);
-              }, 2000);
+              }, 1000);
             }}
           >
             Next

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Container, Nav, Navbar, Button, Spinner } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import api from "../API/api";
 import Login from "./Login";
 import Register from "./Register";
@@ -20,6 +21,7 @@ const Header = () => {
     }
   };
   check();
+
   const [showLogin, setShowLogin] = useState(false);
 
   const handleCloseLogin = () => setShowLogin(false);
@@ -38,11 +40,13 @@ const Header = () => {
       setName("");
     }
   })();
+
   const handleLogout = async () => {
     setLoading(true);
     try {
       await api.deleteCurrentSession();
       setLogout(!logout);
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }
@@ -52,12 +56,18 @@ const Header = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand href="/">Quiz!</Navbar.Brand>
+        <LinkContainer to="/">
+          <Navbar.Brand>Quiz!</Navbar.Brand>
+        </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/about">About</Nav.Link>
+            <LinkContainer to="/">
+              <Nav.Link>Home</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/about">
+              <Nav.Link>About</Nav.Link>
+            </LinkContainer>
           </Nav>
 
           {logout ? (
