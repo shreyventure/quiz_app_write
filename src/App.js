@@ -8,18 +8,19 @@ import Start from "./components/Start";
 
 function App() {
   const [start, setStart] = useState(false);
+  const [score, setScore] = useState(0);
   const changeStart = () => {
     setStart(!start);
   };
   const data = [
     {
-      question:
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente tempora autem saepe eum laudantium voluptatem porro magnam velit amet. Animi pariatur facilis officia! Esse possimus culpa exercitationem in unde sit.",
-      answer: "",
+      question: "Which of the following is not an OOPS concept?",
+      options: ["Encapsulation", "Polymorphism", "Exception", "Abstraction"],
+      answer: "Exception",
     },
-    { question: "Yoo!", answer: "" },
-    { question: "", answer: "" },
-    { question: "", answer: "" },
+    { question: "Yoo!", options: [], answer: "" },
+    { question: "", options: [], answer: "" },
+    { question: "", options: [], answer: "" },
   ];
   const totalQuestions = data.length;
   const [idx, setIdx] = useState(0);
@@ -39,9 +40,11 @@ function App() {
               totalQuestions={totalQuestions}
               idx={idx}
               incrementIdx={incrementIdx}
+              score={score}
+              setScore={setScore}
             />
           ) : (
-            <p>End!</p>
+            <p>Score: {score}</p>
           )
         ) : (
           <Start changeStart={changeStart} />

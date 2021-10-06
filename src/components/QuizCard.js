@@ -1,9 +1,19 @@
-import { Card, Button } from "react-bootstrap";
+import { useState } from "react";
+import { Card, Button, Form } from "react-bootstrap";
 
-const QuizCard = ({ data, totalQuestions, idx, incrementIdx }) => {
+const QuizCard = ({
+  data,
+  totalQuestions,
+  idx,
+  incrementIdx,
+  score,
+  setScore,
+}) => {
+  const [answer, setAnswer] = useState(null);
+  const [style, setStyle] = useState("info");
   return (
     <Card
-      className="border-info h-100 w-100"
+      className={`border-${style} h-100 w-100`}
       style={{ borderRadius: "20px" }}
       bg="dark"
       variant="light"
@@ -13,12 +23,37 @@ const QuizCard = ({ data, totalQuestions, idx, incrementIdx }) => {
       </Card.Header>
       <Card.Body>
         <Card.Text></Card.Text>
-        <div className="" style={{ minHeight: "85%", maxHeight: "85%" }}></div>
+        <div
+          className=""
+          style={{ minHeight: "85%", maxHeight: "85%" }}
+          onChange={(e) => setAnswer(e.target.value)}
+        >
+          {data[idx].options.map((opt, id) => (
+            <Form.Check
+              size="xl"
+              key={id}
+              type="radio"
+              id={`default-radio-` + id}
+              label={opt}
+              value={opt}
+              name={"option"}
+            />
+          ))}
+        </div>
         <div className="d-flex justify-content-between px-3">
           <Button
             variant="primary"
             onClick={() => {
-              incrementIdx(idx + 1);
+              if (data[idx].answer === answer) {
+                setScore(score + 1);
+                setStyle("success");
+              } else {
+                setStyle("danger");
+              }
+              setTimeout(() => {
+                incrementIdx(idx + 1);
+                setStyle("info");
+              }, 2000);
             }}
           >
             Next

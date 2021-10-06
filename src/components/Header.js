@@ -70,7 +70,12 @@ const Header = () => {
                   <span className="visually-hidden">Loading...</span>
                 </Spinner>
               ) : (
-                <Button onClick={() => handleLogout()}>Logout</Button>
+                <Button
+                  className="btn btn-danger"
+                  onClick={() => handleLogout()}
+                >
+                  Logout
+                </Button>
               )}
             </>
           ) : (
