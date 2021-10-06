@@ -3,7 +3,36 @@
 ## Frontend
 
 - Home Page
+
   ![Home Page](./images/home.png)
+
+- Login
+
+  ![Login](./images/login.png)
+
+- SignUp
+
+  ![SignUp](./images/signup.png)
+
+- Quiz
+  ![Quiz](./images/quiz.png)
+
+- Score
+  ![Score](./images/score.png)
+
+## Backend
+
+- Dashboard
+  ![Dashboard](./images/appwrite_home.png)
+
+- Database
+  ![Database](./images/database.png)
+
+- Documents
+  ![Documents](./images/documents.png)
+
+- Users
+  ![Users](./images/users.png)
 
 # Getting Started with Create React App
 
