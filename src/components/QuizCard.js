@@ -23,13 +23,12 @@ const QuizCard = ({
       </Card.Header>
       <Card.Body>
         <Card.Text></Card.Text>
-        <div
-          className=""
-          style={{ minHeight: "85%", maxHeight: "85%" }}
-          onChange={(e) => setAnswer(e.target.value)}
-        >
+        <div style={{ minHeight: "80%", maxHeight: "80%", fontSize: "20px" }}>
           {data[idx].options.map((opt, id) => (
             <Form.Check
+              className="my-3"
+              onChange={(e) => setAnswer(e.target.value)}
+              checked={answer === opt}
               size="xl"
               key={id}
               type="radio"
@@ -53,6 +52,7 @@ const QuizCard = ({
               setTimeout(() => {
                 incrementIdx(idx + 1);
                 setStyle("info");
+                setAnswer(null);
               }, 2000);
             }}
           >
@@ -61,9 +61,7 @@ const QuizCard = ({
           <Button
             className="mx-2"
             variant="danger"
-            onClick={() => {
-              incrementIdx(totalQuestions);
-            }}
+            onClick={() => incrementIdx(totalQuestions)}
           >
             Quit
           </Button>

@@ -3,25 +3,26 @@ import "./App.css";
 import { Container } from "react-bootstrap";
 import QuizCard from "./components/QuizCard";
 import Footer from "./components/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Start from "./components/Start";
+import api from "./API/api";
+import Server from "./utils/config";
 
 function App() {
   const [start, setStart] = useState(false);
   const [score, setScore] = useState(0);
+  const [data, setData] = useState([]);
   const changeStart = () => {
     setStart(!start);
   };
-  const data = [
-    {
-      question: "Which of the following is not an OOPS concept?",
-      options: ["Encapsulation", "Polymorphism", "Exception", "Abstraction"],
-      answer: "Exception",
-    },
-    { question: "Yoo!", options: [], answer: "" },
-    { question: "", options: [], answer: "" },
-    { question: "", options: [], answer: "" },
-  ];
+  useEffect(() => {
+    const getlist = async () => {
+      const ret = await api.listDocuments(Server.questions_collectionID);
+      setData(ret.documents);
+    };
+    getlist();
+  }, []);
+
   const totalQuestions = data.length;
   const [idx, setIdx] = useState(0);
 
